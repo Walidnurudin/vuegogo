@@ -31,9 +31,14 @@
           <tbody v-if="todos.length > 0">
             <tr v-for="(item, key) in todos" v-bind:key="key">
               <td>{{key + 1}}</td>
-              <td>{{item}}</td>
               <td>
-                <b-button variant="danger" v-on:click="deleteTodo(key)">delete</b-button>
+                <div v-if="show !== key">{{item}}</div>
+                <b-input v-if="show === key" type="text" v-model="update" @keypress.enter="save(key)" placeholder="update..."></b-input>
+              </td>
+              <td>
+                <b-button class="mr-3" variant="danger" v-on:click="deleteTodo(key)">delete</b-button>
+                <b-button v-if="show !== key" variant="outline-primary" @click="up(item, key)">update</b-button>
+                <b-button v-if="show === key" variant="primary" @click="save(key)">save</b-button>
               </td>
             </tr>
           </tbody>
@@ -56,7 +61,9 @@ export default {
   data() {
     return {
       todo: "",
-      todos: []
+      todos: [],
+      show: false,
+      update: ""
     };
   },
   methods: {
@@ -66,11 +73,18 @@ export default {
     },
     deleteTodo(index) {
       this.todos.splice(index, 1);
+    },
+    up(i, key) {
+      this.show = key;
+      this.update = i;
+    },
+    save(id) {
+      this.show = true;
+      this.todos.splice(id, 1, this.update);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>
