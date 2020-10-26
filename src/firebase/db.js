@@ -2,7 +2,7 @@ import {initializeApp} from 'firebase';
 import 'firebase/firestore';
 
 var app = initializeApp({
-  apiKey: "AIzaSyB1tICk9QZjNR_4S-R35szs2On-hItVhxc",
+  apiKey: process.env.KEY,
   authDomain: "vuegogo.firebaseapp.com",
   databaseURL: "https://vuegogo.firebaseio.com",
   projectId: "vuegogo",

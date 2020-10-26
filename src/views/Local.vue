@@ -56,6 +56,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Local",
   data() {
@@ -85,6 +86,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
