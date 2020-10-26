@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1>To Do List</h1>
+    <h1>To Do List with Firebase</h1>
 
     <b-row class="justify-content-center">
       <b-col cols="8">
